@@ -7,6 +7,6 @@
     "\\.github\\actions\\lhr-out",
     "\\src"
   ],
-  "SelectedNode": "\\app.properties",
+  "SelectedNode": "\\src\\estimator.js",
   "PreviewInSolutionExplorer": false
 }
