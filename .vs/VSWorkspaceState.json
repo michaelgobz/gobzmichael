@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\.github\\actions",
+    "\\.github\\actions\\jest-out",
+    "\\.github\\actions\\lhr-out",
+    "\\src"
+  ],
+  "SelectedNode": "\\app.properties",
+  "PreviewInSolutionExplorer": false
+}
