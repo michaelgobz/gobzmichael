@@ -1,21 +1,21 @@
 // impact case requested by time
 const impactInfectionsByRequestedTime = (data) => {
-  if (data.periodType === 'days') {
+  if (data === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
-  } if (data.periodType === 'weeks') {
+  } if (data === 'weeks') {
     return (Math.trunc(((data.timeToElapse * 7) / 3)));
-  } if (data.periodType === 'months') {
+  } if (data === 'months') {
     return (Math.trunc(((data.timeToElapse * 30) / 3)));
   }
   return null;
 };
 // severeImpact cases requeted by time
 const severeInfectionsByRequestTime = (data) => {
-  if (data.periodType === 'days') {
+  if (data === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
-  } if (data.periodType === 'weeks') {
+  } if (data === 'weeks') {
     return (Math.trunc(((data.timeToElapse * 7) / 3)));
-  } if (data.periodType === 'months') {
+  } if (data === 'months') {
     return (Math.trunc(((data.timeToElapse * 30) / 3)));
   }
   return null;
