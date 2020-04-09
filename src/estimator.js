@@ -2,6 +2,8 @@ const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
   const bedForPostiveCases = (0.35 * data.totalHospitalBeds);
+  const avgY = data.region.avgDailyIncomeInUSD;
+  const populationOfIncome = data.region.avgDailyIncomePopulation;
   // normailse
   if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
@@ -24,7 +26,16 @@ const covid19ImpactEstimator = (data) => {
   const severeCases = severeImpact.severeCasesByRequestedTime;
   impact.hospitalBedsByRequestedTime = Math.ceil(bedForPostiveCases - impactCases);
   severeImpact.hospitalBedsByRequestedTime = Math.ceil(bedForPostiveCases - severeCases);
-
+  // challenge_3
+  impact.casesForICUByRequestedTime = 0.05 * impact.infectionsByRequestedTime;
+  severeImpact.casesForICUByRequestedTime = 0.05 * severeImpact.infectionsByRequestedTime;
+  impact.casesForVentilatorsByRequestedTime = 0.02 * impact.infectionsByRequestedTime;
+  severeImpact.casesForVentilatorsByRequestedTime = 0.02 * severeImpact.infectionsByRequestedTime;
+  // dollarsInFlight computing
+  const impactReq = impact.infectionsByRequestedTime;
+  const severeReq = severeImpact.infectionsByRequestedTime;
+  impact.dollarsInFlight = impactReq * populationOfIncome * avgY * days;
+  severeImpact.dollarsInFlight = severeReq * populationOfIncome * avgY * days;
   // return
   return {
     data,
