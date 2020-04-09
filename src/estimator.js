@@ -1,5 +1,5 @@
 // impact case requested by time
-const impactInfectionsByRequestedTime = (data) => {
+function impactInfectionsByRequestedTime(data) {
   if (data === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
   } if (data === 'weeks') {
@@ -7,9 +7,10 @@ const impactInfectionsByRequestedTime = (data) => {
   } if (data === 'months') {
     return (Math.trunc(((data.timeToElapse * 30) / 3)));
   }
-};
+  return impactInfectionsByRequestedTime;
+}
 // severeImpact cases requeted by time
-const severeInfectionsByRequestTime = (data) => {
+function severeInfectionsByRequestTime(data) {
   if (data === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
   } if (data === 'weeks') {
@@ -17,7 +18,8 @@ const severeInfectionsByRequestTime = (data) => {
   } if (data === 'months') {
     return (Math.trunc(((data.timeToElapse * 30) / 3)));
   }
-};
+  return severeInfectionsByRequestTime;
+}
 // mother function
 const covid19ImpactEstimator = (data) => ({
   data: {
