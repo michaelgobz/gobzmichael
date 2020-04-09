@@ -1,5 +1,5 @@
 // impact case requested by time
-const impactInfectionsByRequestedTime = (data) => {
+const impactInfectionsByRequestedTime = (data.periodType) => {
   if (data.periodType === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
   } if (data.periodType === 'weeks') {
@@ -10,7 +10,7 @@ const impactInfectionsByRequestedTime = (data) => {
   return null;
 };
 // severeImpact cases requeted by time
-const severeInfectionsByRequestTime = (data) => {
+const severeInfectionsByRequestTime = (data.periodType) => {
   if (data.periodType === 'days') {
     return (Math.trunc(data.timeToElapse / 3));
   } if (data.periodType === 'weeks') {
