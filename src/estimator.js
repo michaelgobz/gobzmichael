@@ -1,13 +1,13 @@
 const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
-  let days = data.timeToElapse;
   // normailse
   if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
   } else if (data.periodType === 'months') {
     data.timeToElapse *= 30;
   }
+  const days = data.timeToElapse;
   // common factor
   const factor = Math.trunc(days / 3);
   // currently_infected
