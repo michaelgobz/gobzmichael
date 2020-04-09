@@ -1,48 +1,27 @@
-// impact case requested by time
-function impactInfectionsByRequestedTime(data) {
-  if (data.periodType === 'days') {
-    return (Math.trunc(data.timeToElapse / 3));
-  } if (data.periodType === 'weeks') {
-    return (Math.trunc(((data.timeToElapse * 7) / 3)));
-  } if (data.periodType === 'months') {
-    return (Math.trunc(((data.timeToElapse * 30) / 3)));
+const covid19ImpactEstimator = (data) => {
+  const impact = {};
+  const severeImpact = {};
+  const days = data.timeToElapse;
+  // normailse
+  if (data.periodType === 'weeks') {
+    data.timeToElapse *= 7;
+  } else if (data.periodType === 'months') {
+    data.timeToElapse *= 30;
   }
-  return 0;
-}
-// severeImpact cases requeted by time
-function severeInfectionsByRequestTime(data) {
-  if (data.periodType === 'days') {
-    return (Math.trunc(data.timeToElapse / 3));
-  } if (data.periodType === 'weeks') {
-    return (Math.trunc(((data.timeToElapse * 7) / 3)));
-  } if (data.periodType === 'months') {
-    return (Math.trunc(((data.timeToElapse * 30) / 3)));
-  }
-  return 0;
-}
-// mother function
-const covid19ImpactEstimator = (data) => ({
-  data: {
-    region: {
-      name: 'Africa',
-      avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 58,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-  },
-  Impact: {
-    currentlyInfected: data.reportedCases * 10,
-    infectionsByRequestedTime: impactInfectionsByRequestedTime()
-  },
-  severeImpact: {
-    currentlyInfected: data.reportedCases * 50,
-    infectionsByRequestedTime: severeInfectionsByRequestTime()
-  }
-});
+  // common factor
+  const factor = Math.trunc(days / 3);
+  // currently_infected
+  impact.currentlyInfected = data.reportedCases * 10;
+  severeImpact.currentlyInfected = data.reportedCases * 50;
+  // requestedByTime
+  impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
+  // return
+  return {
+    data,
+    impact,
+    severeImpact
+  };
+};
 
 export default covid19ImpactEstimator;
