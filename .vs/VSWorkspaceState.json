@@ -1,8 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github",
-    "\\.github\\actions",
     "\\.github\\actions\\jest-out",
     "\\.github\\actions\\lhr-out",
     "\\src"
