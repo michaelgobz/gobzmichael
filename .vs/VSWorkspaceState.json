@@ -1,8 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github\\actions\\jest-out",
-    "\\.github\\actions\\lhr-out",
     "\\src"
   ],
   "SelectedNode": "\\src\\estimator.js",
